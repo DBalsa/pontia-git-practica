@@ -1,0 +1,19 @@
+
+name: Demo mensaje manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      mensaje:
+        description: 'Mensaje que se mostrará por consola'
+        required: true
+        type: string
+
+jobs:
+  mostrar_mensaje:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Imprimir mensaje
+        env:
+          MENSAJE: ${{ inputs.mensaje }}
+        run: echo "$MENSAJE"
